@@ -17,7 +17,6 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { axiosPrivateCall } from "../../constants";
 import { fetchDistanceAndDuration } from "../../common/location";
 
-// Validation Schema using Yup
 const AddRouteSchema = Yup.object().shape({
   startLocation: Yup.string().required("Start location is required"),
   endLocation: Yup.string().required("End location is required"),
@@ -52,7 +51,7 @@ const AddRouteForm = ({ handleClose }) => {
       toast.success("Route added successfully!");
       resetForm();
       console.log("API response:", response.data);
-      handleClose(); // Close the modal after successful submission
+      handleClose();
     } catch (error) {
       const errorMessage =
         error.response?.data?.message || "Failed to add route.";
@@ -62,9 +61,9 @@ const AddRouteForm = ({ handleClose }) => {
   };
 
   const calculateDuration = (distance) => {
-    const averageSpeed = 60; // Assuming average speed is 60 km/h
+    const averageSpeed = 60;
     const duration = distance / averageSpeed;
-    return duration.toFixed(2); // Return duration in hours with 2 decimal places
+    return duration.toFixed(2);
   };
 
   return (

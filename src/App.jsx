@@ -14,6 +14,7 @@ import ScheduleBusForm from "./Pages/ScheduleBus";
 import useIdleTimeout from "./common/useIdleTimeout";
 import useOnlineStatus from "./common/useOnlineStatus";
 import { refreshAccessToken } from "./constants";
+import { logoutUser } from "./common/authUtils";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,13 +35,6 @@ function App() {
         handleLogout();
       }
     }
-  };
-
-  const logoutUser = () => {
-    alert("You have been logged out due to inactivity.");
-    localStorage.removeItem("token");
-    window.location.href = "/";
-    setIsAuthenticated(false);
   };
 
   useIdleTimeout(logoutUser);
